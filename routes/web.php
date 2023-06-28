@@ -23,4 +23,3 @@ Route::get('/', function () {
 Route::get('/first', [FirstController::class, 'index']);   
 Route::get('/components', [ComponentController::class, 'index'])->name('index');  
 Route::get('/components/{component}', [ComponentController::class,'show'])->name('show');
-

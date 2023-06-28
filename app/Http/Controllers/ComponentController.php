@@ -24,5 +24,7 @@ class ComponentController extends Controller
     public function show(Component $component)
         {
             return view('show')->with(['component' => $component]);
+
         }   
+
 }
