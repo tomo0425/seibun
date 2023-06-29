@@ -1,4 +1,4 @@
-
+<x-app-layout>   
     <!DOCTYPE HTML>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <head>
@@ -13,16 +13,16 @@
             <div class="container">
                 <div class="row " style="margin:150px;">
                     <div class="border " style="padding:50px; border-radius:20px; background-color: #FFEFD5;">
-                        <div class=" text-center" style="border:1px solid #60EEFF;">
+                        <div class=" text-center" style="">
                             <h1 class="title">
-                            {{ $component->name }}
+                            {{ $example->name }}
                             </h1>
                         </div>
                         
                         <div class="content" >
                             <div class="content__post">
                                 <h3 class="py-4">効果</h3>
-                                <p class="py-1">{{ $component->effect }}</p>    
+                                <p class="py-1">{{ $example->effect }}</p>    
                             </div>
                         </div>
                         <div class="footer" style="position: absolute; left: 42%;">
@@ -38,4 +38,4 @@
         </body>
         
     </html>
- 
+</x-app-layout>    
