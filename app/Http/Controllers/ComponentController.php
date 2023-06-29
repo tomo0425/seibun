@@ -23,8 +23,17 @@ class ComponentController extends Controller
     }
     public function show(Component $component)
         {
-            return view('show')->with(['component' => $component]);
+            //dd($component);
+            return view('show')->with(['example' => $component]);
 
-        }   
+        } 
+    public function bookmark_components()
+    {
+        $components = \Auth::user()->bookmark_components()->orderBy('created_at', 'desc')->paginate(10);
+        $data = [
+            'components' => $components,
+        ];
+        return view('components.bookmarks', $data);
+    }    
 
 }

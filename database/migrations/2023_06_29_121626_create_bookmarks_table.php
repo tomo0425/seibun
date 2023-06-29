@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('components', function (Blueprint $table) {
+        Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->string('effect', 200);
+            $table->integer('user_id');
+            $table->integer('component_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('components');
+        Schema::dropIfExists('bookmarks');
     }
 };
