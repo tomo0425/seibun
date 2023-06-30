@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Component;
+use Illuminate\Support\Facades\DB;
 
 class ComponentController extends Controller
 {
@@ -23,17 +24,8 @@ class ComponentController extends Controller
     }
     public function show(Component $component)
         {
-            //dd($component);
             return view('show')->with(['example' => $component]);
 
         } 
-    public function bookmark_components()
-    {
-        $components = \Auth::user()->bookmark_components()->orderBy('created_at', 'desc')->paginate(10);
-        $data = [
-            'components' => $components,
-        ];
-        return view('components.bookmarks', $data);
-    }    
-
+    
 }

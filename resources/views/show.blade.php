@@ -27,7 +27,10 @@
                         </div>
                         <div class="footer" style="position: absolute; left: 42%;">
                             <a href="/components" style="margin:30px;">戻る</a>
-                            <a href="/" style="margin:30px;">保存</a>
+                            <form action="/components/{{ $example->id }}/book" method="post" style="">
+                        		@csrf
+                        		<input type="submit"  value="保存">
+                            </form>  
                         </div>
                     </div>    
                 </div>   
