@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirstController;
 use App\Http\Controllers\ComponentController; 
 use App\Http\Controllers\BookmarkController; 
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -26,14 +27,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/first', [FirstController::class, 'index'])->name('first');  
+
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/first', [FirstController::class, 'index'])->name('first');  
     Route::get('/components', [ComponentController::class, 'index'])->name('index');  
     Route::get('/components/{component}', [ComponentController::class,'show'])->name('show');
     Route::post('/components/{component}/book', [BookmarkController::class,'book'])->name('book');
+    Route::get('/posts', [PostController::class, 'index']);
 });
 
 require __DIR__.'/auth.php';
