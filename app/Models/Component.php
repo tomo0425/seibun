@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Component extends Model
 {
     use HasFactory;
+    
+    public function posts()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
 }

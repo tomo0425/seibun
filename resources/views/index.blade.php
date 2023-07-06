@@ -23,13 +23,16 @@
                                 </form>      
                             </div>
                             <div class='posts ' style="position: absolute; top: 50%; left: 30%;">
-                                @forelse ($components as $component)
-                                    <div class='component ' style="margin: 50px 0;">
-                                        <a href="/components/{{$component->id}}" class='title'>{{ $component->name }}</a>
-                                    </div>
-                                @empty
-                                    <p>NO POSTS</p>
-                                @endforelse
+                                @if(is_null($components))
+                                @else
+                                    @forelse ($components as $component)
+                                        <div class='component ' style="margin: 50px 0;">
+                                            <a href="/components/{{$component->id}}" class='title'>{{ $component->name }}</a>
+                                        </div>
+                                    @empty
+                                        <p>NO POSTS</p>
+                                    @endforelse
+                                @endif
                             </div>
                         </div>    
                         <div class="col-md-2"></div>
