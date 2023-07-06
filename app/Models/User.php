@@ -47,12 +47,5 @@ class User extends Authenticatable
         return $this->hasMany(Bookmark::class);
     }
     
-    public function bookmark_components()
-    {
-        return $this->belongsToMany(Article::class, 'bookmarks', 'user_id', 'component_id');
-    }
-    public function is_bookmark($componentId)
-    {
-        return $this->bookmarks()->where('component_id', $componentId)->exists();
-    }
+ 
 }

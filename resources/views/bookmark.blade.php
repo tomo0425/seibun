@@ -15,9 +15,9 @@
                     <div class="border " style="padding:50px; border-radius:20px; background-color: #FFEFD5;">
                         <div class=" text-center" style="">
                             <h1 class="title">
-                                @foreach($components as $component)
+                                @foreach($favorites as $favorite)
                                     <div class="mb-4">
-                                        <p>成分：{{$component->name}}</p>
+                                        <p>{{$favorite->component->name}}</p>
                                     </div>
                                 @endforeach
                             </h1>

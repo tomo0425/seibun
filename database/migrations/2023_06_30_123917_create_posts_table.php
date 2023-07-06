@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('component_id');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->string('seibun', 50);
             $table->string('text', 200);
             $table->timestamps();

@@ -14,4 +14,9 @@ class Bookmark extends Model
         'user_id',
         'component_id',
     ];
+    
+    public function component()
+    {
+        return $this->belongsTo(Component::class);
+    }
 }
