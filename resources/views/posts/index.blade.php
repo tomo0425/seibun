@@ -12,18 +12,22 @@
         <body>
             <div class="container">
                 <h1>タイムライン</h1>
-                <form action="/posts" method="POST">
-                    @csrf
-                    <div class="title">
-                        <h2>seibun</h2>
-                        <input type="text" name="post[seibun]" placeholder="タイトル"/>
-                    </div>
-                    <div class="body">
-                        <h2>text</h2>
-                        <textarea name="post[text]" placeholder=""></textarea>
-                    </div>
-                    <input type="submit" value="store"/>
-                </form>
+                <div class="footer">
+                    <a href="/posts/create">投稿</a>
+                </div>
+                <div class='posts'>
+                    @foreach ($tweets as $tweet)
+                        <div class="media col-10 my-2" style="">
+                            <div class="media-body comment-body">
+                                <div class="row">
+                                    <span class="comment-body-user">{{$tweet->user->name}}</span>
+                                    <span class="comment-body-time">{{$tweet->created_at}}</span>
+                                </div>
+                                <span class="comment-body-content">{{$tweet->text}}</span>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>    
             
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
