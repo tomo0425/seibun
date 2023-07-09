@@ -37,8 +37,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/components/{component}', [ComponentController::class,'show'])->name('show');
     Route::post('/components/{component}/book', [BookmarkController::class,'book'])->name('book');
     Route::get('/bookmark', [BookmarkController::class,'bookmark'])->name('bookmark');
-    Route::get('/posts', [PostController::class, 'post'])->name('post');
-    Route::post('/posts', [PostController::class, 'store'])->name('store');
+    Route::get('/posts/index', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    
 });
 
 require __DIR__.'/auth.php';

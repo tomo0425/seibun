@@ -47,5 +47,11 @@ class User extends Authenticatable
         return $this->hasMany(Bookmark::class);
     }
     
+    public function tweets()
+    {
+        return $this->hasMany(Post::class);
+    }
+    
+    
  
 }
