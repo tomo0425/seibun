@@ -25,6 +25,7 @@
                                 </div>
                                 <span class="comment-body-content">{{$tweet->text}}</span>
                             </div>
+                            <img src="{{ $tweet->image }}">
                         </div>
                     @endforeach
                 </div>
