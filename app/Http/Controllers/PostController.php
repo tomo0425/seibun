@@ -7,6 +7,8 @@ use App\Models\Post;
 use App\Models\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Cloudinary;
+use App\Http\Requests\PostRequest;
 
 
 class PostController extends Controller
@@ -29,12 +31,15 @@ class PostController extends Controller
     }
     
     
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         $post = new Post();
         $post->user_id = auth()->id();
         $post->component_id = NULL;
-        $post->image = $request->image;
+        if($request->file('image')){
+            $path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+            $post->image = $path;
+        }
         $post->seibun = $request->post['seibun'];
         $post->text = $request->post['text'];
         $post->save();

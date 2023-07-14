@@ -11,19 +11,48 @@
         </head>
         <body>
             <div class="container">
-                <h1>タイムライン</h1>
-                <form action="/posts" method="post">
-                    @csrf
-                    <div class="title">
-                        <h2>Title</h2>
-                        <input type="text" name="post[seibun]" placeholder=""/>
-                    </div>
-                    <div class="body">
-                        <h2>Body</h2>
-                        <textarea name="post[text]" placeholder=""></textarea>
-                    </div>
-                    <input type="submit" value="store"/>
-                </form>
+                <div class="row justify-content-center" style="margin-top: 50px;">
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-header">タイムライン作成</div>
+                            <div class="card-body" style="margin:0 auto;">
+                                <form method="POST" action="/posts" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row mb-3">
+                                        <div class="col-md-6 ">
+                                            <h6>タイトル</h6>
+                                            <input type="text" name="post[seibun]" placeholder=""/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6 ">
+                                            <h6>本文</h6>
+                                            <textarea name="post[text]" placeholder=""></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6 ">
+                                            <h6>画像挿入</h6>
+                                            <input type="file" name="image">
+                                        </div>
+                                    </div>
+            
+                                    
+                                    <div class="row mb-3">
+                                        <div class=" offset-md-4" style="margin:0 auto;">
+                                            <button onclick="location.href='posts/index'" type="submit" class="btn btn-primary">
+                                                投稿
+                                            </button>
+            
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>    
+                    </div>    
+                </div>    
             </div>    
             
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
