@@ -11,21 +11,22 @@
         </head>
         <body>
             <div class="container">
-                <h1>タイムライン</h1>
+                <h1 class="my-3">掲示板</h1>
                 <div class="footer">
-                    <a href="/posts/create">投稿</a>
+                    <a href="/posts/create">投稿する</a>
                 </div>
                 <div class='posts'>
                     @foreach ($tweets as $tweet)
-                        <div class="media col-10 my-2" style="">
+                        <div class="media col-10 my-5" style="">
                             <div class="media-body comment-body">
                                 <div class="row">
-                                    <span class="comment-body-user">{{$tweet->user->name}}</span>
-                                    <span class="comment-body-time">{{$tweet->created_at}}</span>
+                                    <span class="comment-body-user mx-2">{{$tweet->id}}:</span>
+                                    <span class="comment-body-user mx-2">{{$tweet->user->name}}</span>
+                                    <span class="comment-body-time mx-2">{{$tweet->created_at}}</span>
                                 </div>
                                 <span class="comment-body-content">{{$tweet->text}}</span>
+                                <img src="{{ $tweet->image }}">
                             </div>
-                            <img src="{{ $tweet->image }}">
                         </div>
                     @endforeach
                 </div>
