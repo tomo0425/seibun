@@ -11,7 +11,7 @@
         </head>
         <body>
             <div class="container">
-                <div class="row " style="margin:150px;">
+                <div class="row " style="margin:100px;">
                     <div class="border " style="padding:50px; border-radius:20px; background-color: #FFEFD5;">
                         <div class=" text-center" style="">
                             <h1 class="title">
@@ -25,8 +25,8 @@
                                 <p class="py-1">{{ $example->effect }}</p>    
                             </div>
                         </div>
-                        <div class="footer" style="position: absolute; left: 42%;">
-                            <a href="/components" style="margin:30px;">戻る</a>
+                        <div class=" d-flex" style=" margin: 0 auto;">
+                            <a href="/components" style="">戻る</a>
                             <form action="/components/{{ $example->id }}/book" method="post" style="">
                         		@csrf
                         		<input type="submit"  value="保存">

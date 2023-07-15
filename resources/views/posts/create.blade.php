@@ -14,26 +14,22 @@
                 <div class="row justify-content-center" style="margin-top: 50px;">
                     <div class="col-md-5">
                         <div class="card">
-                            <div class="card-header">タイムライン作成</div>
+                            <div class="card-header">投稿作成</div>
                             <div class="card-body" style="margin:0 auto;">
                                 <form method="POST" action="/posts" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row mb-3">
-                                        <div class="col-md-6 ">
-                                            <h6>タイトル</h6>
-                                            <input type="text" name="post[seibun]" placeholder=""/>
-                                        </div>
+                                        <h6>タイトル</h6>
+                                        <input type="text" name="post[seibun]" style="width: 100%;" placeholder=""/>
                                     </div>
                                     
                                     <div class="row mb-3">
-                                        <div class="col-md-6 ">
-                                            <h6>本文</h6>
-                                            <textarea name="post[text]" placeholder=""></textarea>
-                                        </div>
+                                        <h6>本文</h6>
+                                        <textarea name="post[text]" style="width: 100%;" placeholder=""></textarea>
                                     </div>
                                     
                                     <div class="row mb-3">
-                                        <div class="col-md-6 ">
+                                        <div class=" ">
                                             <h6>画像挿入</h6>
                                             <input type="file" name="image">
                                         </div>
@@ -45,7 +41,7 @@
                                             <button onclick="location.href='posts/index'" type="submit" class="btn btn-primary">
                                                 投稿
                                             </button>
-            
+    
                                         </div>
                                     </div>
                                 </form>
