@@ -9,15 +9,17 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary;
 use App\Http\Requests\PostRequest;
+use App\Models\Bookmark;
 
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Post $post,Bookmark $bookmark)
     {
         $id = Auth::id();
         $tweets = Post::where('user_id','=', $id)->get();
-        return view('posts.index')->with(['tweets' => $tweets]);
+        $favorites = Bookmark::where('user_id','=', $id)->get();
+        return view('posts.index')->with(['tweets' => $tweets, 'favorites' => $favorites]);
     }
     
     public function show(Post $post)
@@ -25,9 +27,11 @@ class PostController extends Controller
        return view('posts.show')->with(['post' => $post]);
     }
     
-    public function create()
+    public function create(Bookmark $bookmark)
     {
-        return view('posts.create');
+        $id = Auth::id();
+        $favorites = Bookmark::where('user_id','=', $id)->get();
+        return view('posts.create')->with(['favorites' => $favorites]);
     }
     
     

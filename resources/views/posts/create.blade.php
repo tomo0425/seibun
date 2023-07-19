@@ -1,6 +1,21 @@
 <x-app-layout>   
     <!DOCTYPE HTML>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+        <header>
+            @section('seibun', 'my-wrapper')
+            @section('navigations')
+                <div class="navigations">
+                    @php
+                        $uniqueComponents = $favorites->unique('component_id');
+                    @endphp
+                    @foreach($uniqueComponents as $favorite)
+                        <div class="mb-4">
+                            <a href="/components/{{$favorite->component->id}}">{{$favorite->component->name}}</a>
+                        </div>
+                    @endforeach
+                </div>
+            @endsection
+        </header>
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">

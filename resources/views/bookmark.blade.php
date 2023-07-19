@@ -10,17 +10,21 @@
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         </head>
         <body>
-                        <div class="container">
+            <div class="container">
                 <div class="row " style="margin:150px;">
-                    <div class="border " style="padding:50px; border-radius:20px; background-color: #FFEFD5;">
+                    <div class="" style="">
                         <div class=" text-center" style="">
-                            <h1 class="title">
-                                @foreach($favorites as $favorite)
+                            <h3>保存した成分</h3>
+                            <p class="title">
+                                @php
+                                    $uniqueComponents = $favorites->unique('component_id');
+                                @endphp
+                                @foreach($uniqueComponents as $favorite)
                                     <div class="mb-4">
-                                        <p>{{$favorite->component->name}}</p>
+                                        <a href="/components/{{$favorite->component->id}}">{{$favorite->component->name}}</a>
                                     </div>
                                 @endforeach
-                            </h1>
+                            </p>
                         </div>
                     </div>    
                 </div>   

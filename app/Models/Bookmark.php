@@ -19,4 +19,10 @@ class Bookmark extends Model
     {
         return $this->belongsTo(Component::class);
     }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }
