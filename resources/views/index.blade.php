@@ -1,6 +1,21 @@
 <x-app-layout>
     <!DOCTYPE html>
         <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+            <header>
+                @section('seibun', 'my-wrapper')
+                @section('navigations')
+                    <div class="navigations">
+                        @php
+                            $uniqueComponents = $favorites->unique('component_id');
+                        @endphp
+                        @foreach($uniqueComponents as $favorite)
+                            <div class="mb-4">
+                                <a href="/components/{{$favorite->component->id}}">{{$favorite->component->name}}</a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endsection
+            </header>
             <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,11 +29,12 @@
                     <div class="row" style="">
                         <div class="col-md-2"></div>
                         <div class="col-md-8" style="position: absolute; top: 49%; left: 57%; transform: translate(-50%, -49%);">
+                            <h4></h4>
                             <div class="col-md-10 input-group"  style="">
                                 <form action="{{ route('index' ) }}"  class="mx-auto "method="GET">
                                     <div class="">
-                                      <input type="text"　class=""   name="keyword" value="{{ $keyword }}" placeholder="検索キーワード" style="width: 400px;">
-                                      <input type="submit"　class=""  value="検索">
+                                      <input type="text"　class=""   name="keyword" value="{{ $keyword }}" placeholder="気になる成分を調べてみよう！" style="width: 400px;">
+                                      <input type="submit"　class="btn btn-primary" value="検索">
                                     </div>
                                 </form>      
                             </div>
@@ -33,6 +49,9 @@
                                         <p>NO POSTS</p>
                                     @endforelse
                                 @endif
+                            </div>
+                            <div class="paginator">
+                             
                             </div>
                         </div>    
                         <div class="col-md-2"></div>

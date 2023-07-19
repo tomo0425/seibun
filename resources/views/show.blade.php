@@ -1,6 +1,21 @@
 <x-app-layout>   
     <!DOCTYPE HTML>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+        <header>
+            @section('seibun', 'my-wrapper')
+            @section('navigations')
+                <div class="navigations">
+                    @php
+                        $uniqueComponents = $favorites->unique('component_id');
+                    @endphp
+                    @foreach($uniqueComponents as $favorite)
+                        <div class="mb-4">
+                            <a href="/components/{{$favorite->component->id}}">{{$favorite->component->name}}</a>
+                        </div>
+                    @endforeach
+                </div>
+            @endsection
+        </header>
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,15 +40,15 @@
                                 <p class="py-1">{{ $example->effect }}</p>    
                             </div>
                         </div>
-                        <div class=" d-flex" style=" margin: 0 auto;">
-                            <a href="/components" style="">戻る</a>
-                            <form action="/components/{{ $example->id }}/book" method="post" style="">
+                        <div class="flex justify-content-center" style="">
+                            <a class="" href="/components" style=" padding:0 15px;">戻る</a>
+                            <form action="/components/{{ $example->id }}/book" method="post" style="padding:0 15px;">
                         		@csrf
                         		<input type="submit"  value="保存">
                             </form>  
                         </div>
                     </div>    
-                </div>   
+                </div> 
             </div>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
