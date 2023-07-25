@@ -23,7 +23,6 @@
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-            <link rel="stylesheet" href="{{ asset('css/posts.index.css') }}">      
         </head>
         <body>
             <div class="container">
@@ -36,22 +35,13 @@
                         <div class="media col-10 my-5" style="">
                             <div class="media-body comment-body">
                                 <div class="row">
+                                    <span class="comment-body-user mx-2">{{$post->id}}:</span>
                                     <span class="comment-body-user mx-2">{{$post->user->name}}</span>
                                     <span class="comment-body-time mx-2">{{$post->created_at}}</span>
                                 </div>
-                                <span class="comment-body-seibun">{{$post->seibun}}</span></br>
-                                <div class="star-rating">
-                                  @for ($i = 5; $i >= 1; $i--)
-                                    @if ($i <= $post["stars"])
-                                      <span style="color: gold;">★</span>
-                                    @else
-                                      <span style="color:#DDDDDD;">★</span>
-                                    @endif
-                                  @endfor
-                                </div>
                                 <span class="comment-body-content">{{$post->text}}</span>
                                 @if ($post->image)
-                                    <img src="{{ $post->image }}" alt="画像" style="width:250px; height:250px;">
+                                    <img src="{{ $post->image }}" alt="画像" style="width:300px; height:300px;">
                                 @endif
                             </div>
                         </div>

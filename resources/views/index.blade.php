@@ -9,8 +9,8 @@
                             $uniqueComponents = $favorites->unique('component_id');
                         @endphp
                         @foreach($uniqueComponents as $favorite)
-                            <div class="mb-4">
-                                <a href="/components/{{$favorite->component->id}}">{{$favorite->component->name}}</a>
+                            <div class="list-group">
+                                <a href="/components/{{$favorite->component->id}}" class="list-group-item">{{$favorite->component->name}}</a>
                             </div>
                         @endforeach
                     </div>
@@ -20,7 +20,7 @@
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-                <title>Blog</title>
+                <title>seibun</title>
                 <!-- Fonts -->
                 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
             </head>

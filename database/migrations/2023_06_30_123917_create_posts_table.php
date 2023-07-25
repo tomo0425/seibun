@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('seibun', 50);
             $table->string('text', 200);
+            $table->integer('stars')->default(0);
             $table->timestamps();
         });
     }
