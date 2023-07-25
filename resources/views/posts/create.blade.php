@@ -9,8 +9,8 @@
                         $uniqueComponents = $favorites->unique('component_id');
                     @endphp
                     @foreach($uniqueComponents as $favorite)
-                        <div class="mb-4">
-                            <a href="/components/{{$favorite->component->id}}">{{$favorite->component->name}}</a>
+                        <div class="list-group">
+                            <a href="/components/{{$favorite->component->id}}" class="list-group-item">{{$favorite->component->name}}</a>
                         </div>
                     @endforeach
                 </div>
@@ -23,10 +23,11 @@
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{ asset('css/posts.create.css') }}">        
         </head>
         <body>
             <div class="container">
-                <div class="row justify-content-center" style="margin-top: 50px;">
+                <div class="row justify-content-center " style="margin-top: 50px; padding-bottom:50px;">
                     <div class="col-md-5">
                         <div class="card">
                             <div class="card-header">投稿作成</div>
@@ -34,7 +35,7 @@
                                 <form method="POST" action="/posts" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row mb-3">
-                                        <h6>タイトル</h6>
+                                        <h6>成分</h6>
                                         <input type="text" name="post[seibun]" style="width: 100%;" placeholder=""/>
                                     </div>
                                     
@@ -50,6 +51,18 @@
                                         </div>
                                     </div>
             
+                                    <div class="rate-form">
+                                      <input id="star5" type="radio"  value="5" name="post[stars]">
+                                      <label for="star5">★</label>
+                                      <input id="star4" type="radio" value="4" name="post[stars]">
+                                      <label for="star4">★</label>
+                                      <input id="star3" type="radio"  value="3" name="post[stars]">
+                                      <label for="star3">★</label>
+                                      <input id="star2" type="radio"  value="2" name="post[stars]">
+                                      <label for="star2">★</label>
+                                      <input id="star1" type="radio"  value="1" name="post[stars]">
+                                      <label for="star1">★</label>
+                                    </div>
                                     
                                     <div class="row mb-3">
                                         <div class=" offset-md-4" style="margin:0 auto;">

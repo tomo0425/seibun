@@ -17,9 +17,9 @@ class PostController extends Controller
     public function index(Post $post,Bookmark $bookmark)
     {
         $id = Auth::id();
-        $tweets = Post::where('user_id','=', $id)->get();
         $favorites = Bookmark::where('user_id','=', $id)->get();
-        return view('posts.index')->with(['tweets' => $tweets, 'favorites' => $favorites]);
+        $posts = Post::all(); 
+        return view('posts.index')->with(['posts' => $posts, 'favorites' => $favorites]);
     }
     
     public function show(Post $post)
@@ -46,6 +46,7 @@ class PostController extends Controller
         }
         $post->seibun = $request->post['seibun'];
         $post->text = $request->post['text'];
+        $post->stars = $request->post['stars'];
         $post->save();
         return redirect('/posts/index');
     }

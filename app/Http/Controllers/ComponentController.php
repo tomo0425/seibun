@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 use App\Models\Bookmark;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
+use Cloudinary;
+use App\Http\Requests\PostRequest;
 
 class ComponentController extends Controller
 {
@@ -32,7 +35,8 @@ class ComponentController extends Controller
         {
             $id = Auth::id();
             $favorites = Bookmark::where('user_id','=', $id)->get();
-            return view('show')->with(['example' => $component, 'favorites' => $favorites]);
+            $relatedPosts = Post::where('seibun', $component->name)->get();
+            return view('show')->with(['example' => $component, 'favorites' => $favorites, 'relatedPosts' => $relatedPosts,]);
 
         } 
     

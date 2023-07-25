@@ -9,8 +9,8 @@
                         $uniqueComponents = $favorites->unique('component_id');
                     @endphp
                     @foreach($uniqueComponents as $favorite)
-                        <div class="mb-4">
-                            <a href="/components/{{$favorite->component->id}}">{{$favorite->component->name}}</a>
+                        <div class="list-group">
+                            <a href="/components/{{$favorite->component->id}}" class="list-group-item">{{$favorite->component->name}}</a>
                         </div>
                     @endforeach
                 </div>
@@ -23,6 +23,7 @@
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{ asset('css/show.css') }}">        
         </head>
         <body>
             <div class="container">
@@ -47,7 +48,31 @@
                         		<input type="submit"  value="保存">
                             </form>  
                         </div>
-                    </div>    
+                    </div>  
+                    <div style="margin:50px 0;">
+                        <h2 class="">関連する投稿</h2>
+                        <div style="mt-3">
+                        {{-- $component->nameと$post->seibunが一致する場合のPostレコードを表示 --}}
+                        @if($relatedPosts->isNotEmpty())
+                            <p>{{ $example->name }}</p>
+                            <ul>
+                                @foreach($relatedPosts as $relatedPost)
+                                    <li>{{ $relatedPost->text }}</li>
+                                    <div class="star-rating">
+                                      @for ($i = 5; $i >= 1; $i--)
+                                        @if ($i <= $relatedPost["stars"])
+                                          <span style="color: gold;">★</span>
+                                        @else
+                                          <span style="color:#DDDDDD;">★</span>
+                                        @endif
+                                      @endfor
+                                    </div>
+                                    <img src="{{ $relatedPost->image }}" alt="画像" style="width:250px; height:250px;">
+                                @endforeach
+                            </ul>
+                        @endif
+                        </div>
+                    </div>
                 </div> 
             </div>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
