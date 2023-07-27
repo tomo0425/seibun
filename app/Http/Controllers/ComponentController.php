@@ -36,7 +36,8 @@ class ComponentController extends Controller
             $id = Auth::id();
             $favorites = Bookmark::where('user_id','=', $id)->get();
             $relatedPosts = Post::where('seibun', $component->name)->get();
-            return view('show')->with(['example' => $component, 'favorites' => $favorites, 'relatedPosts' => $relatedPosts,]);
+            $isFavorite = $favorites->contains('component_id', $component->id);
+            return view('show')->with(['example' => $component, 'favorites' => $favorites, 'relatedPosts' => $relatedPosts,'isFavorite' => $isFavorite,]);
 
         } 
     

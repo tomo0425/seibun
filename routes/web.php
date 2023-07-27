@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/components', [ComponentController::class, 'index'])->name('index');  
     Route::get('/components/{component}', [ComponentController::class,'show'])->name('show');
     Route::post('/components/{component}/book', [BookmarkController::class,'book'])->name('book');
+    Route::delete('/components/{component}/unbook', [BookmarkController::class, 'unbook'])->name('unbook');
     Route::get('/bookmark', [BookmarkController::class,'bookmark'])->name('bookmark');
     Route::get('/posts/index', [PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');

@@ -5,10 +5,7 @@
             @section('seibun', 'my-wrapper')
             @section('navigations')
                 <div class="navigations">
-                    @php
-                        $uniqueComponents = $favorites->unique('component_id');
-                    @endphp
-                    @foreach($uniqueComponents as $favorite)
+                    @foreach($favorites as $favorite)
                         <div class="list-group">
                             <a href="/components/{{$favorite->component->id}}" class="list-group-item">{{$favorite->component->name}}</a>
                         </div>
@@ -42,11 +39,21 @@
                             </div>
                         </div>
                         <div class="flex justify-content-center" style="">
-                            <a class="" href="/components" style=" padding:0 15px;">戻る</a>
-                            <form action="/components/{{ $example->id }}/book" method="post" style="padding:0 15px;">
-                        		@csrf
-                        		<input type="submit"  value="保存">
-                            </form>  
+                            <a class="" href="/components" style="padding: 0 15px;">戻る</a>
+                            @auth
+                                @if ($isFavorite)
+                                    <form action="/components/{{ $example->id }}/unbook" method="post" style="padding: 0 15px;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" value="削除">
+                                    </form>
+                                @else
+                                    <form action="/components/{{ $example->id }}/book" method="post" style="padding: 0 15px;">
+                                        @csrf
+                                        <input type="submit" value="保存">
+                                    </form>
+                                @endif
+                            @endauth
                         </div>
                     </div>  
                     <div style="margin:50px 0;">
@@ -79,6 +86,5 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
         </body>
-        
     </html>
 </x-app-layout>    

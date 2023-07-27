@@ -12,14 +12,28 @@ use Illuminate\Support\Facades\Auth;
 
 class BookmarkController extends Controller
 {
-    public function book(Request $request, $component_id)
+    public function book(Request $request, Component $component)
     {
-        $bookmark = Bookmark::create(['user_id' => Auth::id(), 'component_id' => $component_id]);
-        $keyword = null;
-        $components = null;
-        return view('index')->with(['bookmark' => $bookmark, 'keyword' => $keyword, 'components' => $components ]);
-        
+        $bookmark = Bookmark::where('user_id', Auth::id())->where('component_id', $component->id)->first();
+
+        if (!$bookmark) {
+            $bookmark = Bookmark::create(['user_id' => Auth::id(), 'component_id' => $component->id]);
+        }
+
+        return redirect()->route('show', ['component' => $component->id]);
     }
+
+    public function unbook(Request $request, Component $component)
+    {
+        $bookmark = Bookmark::where('user_id', Auth::id())->where('component_id', $component->id)->first();
+
+        if ($bookmark) {
+            $bookmark->delete();
+        }
+
+        return redirect()->route('show', ['component' => $component->id]);
+    }
+
     
     public function bookmark(Bookmark $bookmark)
     {
