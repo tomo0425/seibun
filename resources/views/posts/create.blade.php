@@ -5,10 +5,7 @@
             @section('seibun', 'my-wrapper')
             @section('navigations')
                 <div class="navigations">
-                    @php
-                        $uniqueComponents = $favorites->unique('component_id');
-                    @endphp
-                    @foreach($uniqueComponents as $favorite)
+                    @foreach($favorites as $favorite)
                         <div class="list-group">
                             <a href="/components/{{$favorite->component->id}}" class="list-group-item">{{$favorite->component->name}}</a>
                         </div>
