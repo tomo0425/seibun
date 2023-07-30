@@ -40,20 +40,18 @@
                         </div>
                         <div class="flex justify-content-center" style="">
                             <a class="" href="/components" style="padding: 0 15px;">戻る</a>
-                            @auth
-                                @if ($isFavorite)
-                                    <form action="/components/{{ $example->id }}/unbook" method="post" style="padding: 0 15px;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="submit" value="削除">
-                                    </form>
-                                @else
-                                    <form action="/components/{{ $example->id }}/book" method="post" style="padding: 0 15px;">
-                                        @csrf
-                                        <input type="submit" value="保存">
-                                    </form>
-                                @endif
-                            @endauth
+                            @if ($isFavorite)
+                                <form action="/components/{{ $example->id }}/unbook" method="post" style="padding: 0 15px;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="削除">
+                                </form>
+                            @else
+                                <form action="/components/{{ $example->id }}/book" method="post" style="padding: 0 15px;">
+                                    @csrf
+                                    <input type="submit" value="保存">
+                                </form>
+                            @endif
                         </div>
                     </div>  
                     <div style="margin:50px 0;">
@@ -61,9 +59,12 @@
                         <div style="mt-3">
                         {{-- $component->nameと$post->seibunが一致する場合のPostレコードを表示 --}}
                         @if($relatedPosts->isNotEmpty())
-                            <p>{{ $example->name }}</p>
                             <ul>
                                 @foreach($relatedPosts as $relatedPost)
+                                    <div>
+                                         {{ $relatedPost->user->name }} {{ $relatedPost->created_at }}
+                                    </div>
+                                    <li>{{ $relatedPost->seibun }}</li>
                                     <li>{{ $relatedPost->text }}</li>
                                     <div class="star-rating">
                                       @for ($i = 5; $i >= 1; $i--)
@@ -77,6 +78,8 @@
                                     <img src="{{ $relatedPost->image }}" alt="画像" style="width:250px; height:250px;">
                                 @endforeach
                             </ul>
+                        @else
+                            <h3>NO POSTS</h3>
                         @endif
                         </div>
                     </div>
