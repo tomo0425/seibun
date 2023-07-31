@@ -50,7 +50,6 @@
                                     
                                     <h6>成分評価</h6>
                                     <div class="rate-form">
-                                        <div class="">
                                             <input id="star5" type="radio"  value="5" name="post[stars]">
                                             <label for="star5">★</label>
                                             <input id="star4" type="radio" value="4" name="post[stars]">
@@ -61,7 +60,6 @@
                                             <label for="star2">★</label>
                                             <input id="star1" type="radio"  value="1" name="post[stars]">
                                             <label for="star1">★</label>
-                                        </div>    
                                     </div>
                                     
                                     <div class="row mb-3">
