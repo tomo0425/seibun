@@ -47,9 +47,9 @@
                                             <input type="file" name="image">
                                         </div>
                                     </div>
-            
+                                    
+                                    <h6>成分評価</h6>
                                     <div class="rate-form">
-                                        <h6>成分評価</h6>
                                         <div class="">
                                             <input id="star5" type="radio"  value="5" name="post[stars]">
                                             <label for="star5">★</label>
