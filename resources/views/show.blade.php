@@ -26,10 +26,24 @@
             <div class="container">
                 <div class="row " style="margin:100px;">
                     <div class="border " style="padding:50px; border-radius:20px; background-color: #FFEFD5;">
-                        <div class=" text-center" style="">
+                        <div class="" style="display: flex; text-align: center;">
                             <h1 class="title">
                             {{ $example->name }}
                             </h1>
+                            <div class="">
+                                @if ($isFavorite)
+                                    <form action="/components/{{ $example->id }}/unbook" method="post" style="padding: 0 15px;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" style="font-size:30px" value="★">
+                                    </form>
+                                @else
+                                    <form action="/components/{{ $example->id }}/book" method="post" style="padding: 0 15px;">
+                                        @csrf
+                                        <input type="submit" style="font-size:30px" value="☆">
+                                    </form>
+                                @endif
+                            </div>    
                         </div>
                         
                         <div class="content" >
@@ -41,18 +55,6 @@
                         <div class="flex justify-content-center" style="">
                             <a class="" href="/components" style="padding: 0 15px;">戻る</a>
                              <a href="/components/{{ $example->id }}/edit">編集</a>
-                            @if ($isFavorite)
-                                <form action="/components/{{ $example->id }}/unbook" method="post" style="padding: 0 15px;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" value="削除">
-                                </form>
-                            @else
-                                <form action="/components/{{ $example->id }}/book" method="post" style="padding: 0 15px;">
-                                    @csrf
-                                    <input type="submit" value="保存">
-                                </form>
-                            @endif
                         </div>
                     </div>  
                     <div style="margin:50px 0;">
