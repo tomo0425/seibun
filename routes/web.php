@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/components', [ComponentController::class, 'index'])->name('index');  
     Route::get('/components/{component}', [ComponentController::class,'show'])->name('show');
+    Route::get('/components/{component}/edit', [ComponentController::class,'edit'])->name('edit');
+    Route::patch('/components/{component}', [ComponentController::class, 'update'])->name('update');
     Route::post('/components/{component}/book', [BookmarkController::class,'book'])->name('book');
     Route::delete('/components/{component}/unbook', [BookmarkController::class, 'unbook'])->name('unbook');
     Route::get('/bookmark', [BookmarkController::class,'bookmark'])->name('bookmark');

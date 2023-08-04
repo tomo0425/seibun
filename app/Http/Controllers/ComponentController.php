@@ -32,13 +32,24 @@ class ComponentController extends Controller
         return view('index', compact('components', 'keyword'))->with(['favorites' => $favorites]);
     }
     public function show(Component $component,Bookmark $bookmark)
-        {
-            $id = Auth::id();
-            $favorites = Bookmark::where('user_id','=', $id)->get();
-            $relatedPosts = Post::where('seibun', $component->name)->get();
-            $isFavorite = $favorites->contains('component_id', $component->id);
-            return view('show')->with(['example' => $component, 'favorites' => $favorites, 'relatedPosts' => $relatedPosts,'isFavorite' => $isFavorite,]);
+    {
+        $id = Auth::id();
+        $favorites = Bookmark::where('user_id','=', $id)->get();
+        $relatedPosts = Post::where('seibun', $component->name)->get();
+        $isFavorite = $favorites->contains('component_id', $component->id);
+        return view('show')->with(['example' => $component, 'favorites' => $favorites, 'relatedPosts' => $relatedPosts,'isFavorite' => $isFavorite,]);
 
-        } 
-    
+    } 
+    public function edit(Component $component, Bookmark $bookmark) {
+        $id = Auth::id();
+        $favorites = Bookmark::where('user_id','=', $id)->get();
+         return view('edit')->with(['example' => $component, 'favorites' => $favorites,]);
+     }
+ 
+    public function update(Request $request, Component $component) {
+        $component->name = $request->input('name');
+        $component->effect = $request->input('effect');
+        $component->save();
+        return redirect()->route('show', $component);
+    }   
 }

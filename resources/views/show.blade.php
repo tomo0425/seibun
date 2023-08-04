@@ -40,6 +40,7 @@
                         </div>
                         <div class="flex justify-content-center" style="">
                             <a class="" href="/components" style="padding: 0 15px;">戻る</a>
+                             <a href="/components/{{ $example->id }}/edit">編集</a>
                             @if ($isFavorite)
                                 <form action="/components/{{ $example->id }}/unbook" method="post" style="padding: 0 15px;">
                                     @csrf
