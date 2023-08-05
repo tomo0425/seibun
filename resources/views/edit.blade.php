@@ -24,24 +24,24 @@
         </head>
         <body>
             <article>
-                 <div>                
-                     <h1>投稿編集</h1>   
-                     
-                     <form action="{{ route('update', $example) }}" method="post">
-                         @csrf
-                         @method('patch')
-                         <div>
-                             <label for="title">成分</label>
-                             <input type="text" name="name" value="{{ $example->name }}">
-                         </div>
-                         <div>
-                             <label for="content">本文</label>
-                             <textarea name="effect">{{ $example->effect }}</textarea>
-                         </div>
+                <div>                
+                    <h1>投稿編集</h1>   
+                    
+                    <form action="{{ route('update', $example) }}" method="post">
+                    @csrf
+                    @method('patch')
+                        <div>
+                            <label for="title">成分</label>
+                            <input type="text" style="width:400px;" name="name" value="{{ $example->name }}">
+                        </div>
+                        <div>
+                            <label for="effect">本文</label>
+                            <textarea name="effect" style="width:400px; height:300px;">{{ $example->effect }}</textarea>
+                        </div>
                         <a href="{{ route('index') }}"> 戻る</a>                                  
-                         <button type="submit">更新</button>
-                     </form>
-                 </div>
+                        <button type="submit">更新</button>
+                    </form>
+                </div>
             </article>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
