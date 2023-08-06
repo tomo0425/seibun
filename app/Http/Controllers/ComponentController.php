@@ -37,7 +37,8 @@ class ComponentController extends Controller
         $favorites = Bookmark::where('user_id','=', $id)->get();
         $relatedPosts = Post::where('seibun', $component->name)->get();
         $isFavorite = $favorites->contains('component_id', $component->id);
-        return view('show')->with(['example' => $component, 'favorites' => $favorites, 'relatedPosts' => $relatedPosts,'isFavorite' => $isFavorite,]);
+        $averageStars = $relatedPosts->avg('stars');
+        return view('show')->with(['example' => $component, 'favorites' => $favorites, 'relatedPosts' => $relatedPosts,'isFavorite' => $isFavorite,'averageStars' => $averageStars,]);
 
     } 
     public function edit(Component $component, Bookmark $bookmark) {
