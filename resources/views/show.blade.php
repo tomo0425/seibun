@@ -41,30 +41,13 @@
                                     <form action="/components/{{ $example->id }}/book" method="post" style="padding: 0 15px;">
                                         @csrf
                                         <input type="submit" style="font-size:30px" value="☆">
-                                    </form>
+                                    </form> 
                                 @endif
                             </div>    
                         </div>
-                        
-                        <div class="star-rating">
-                            @php
-                                $roundedStars =   floor($averageStars); // 平均の星を整数に丸める
-                                $fractionalPart = $averageStars - $roundedStars; // 平均の星の小数部分を計算
-                            @endphp
-                        　　
-                            @for ($i = 5; $i >= 1; $i--)
-                                @if ($i < $roundedStars)
-                                    <span style="color: gold;">★</span>
-                                @elseif ($i === $roundedStars && $fractionalPart > 0)
-                                    <span style="color: gold;">★</span> <!-- 小数部分の星を表示 -->
-                                @else
-                                    <span style="color: #DDDDDD;">★</span>
-                                @endif
-                            @endfor
-                            <p>{{$averageStars}}</p>
-                            <p>投稿件数：{{ $relatedPosts->count() }} 件</p> 
-                            <p>{{ $roundedStars }}</p>
-                            <p>{{$fractionalPart}}</p>
+                        <div class="star">
+                            <span class="rate"></span><span class="num">{{ $averageStars }}</span>
+                            <p class="my-3">投稿件数：{{ $relatedPosts->count() }} 件</p> 
                         </div>
                         <div class="content" >
                             <div class="content__post">
