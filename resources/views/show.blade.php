@@ -48,24 +48,23 @@
                         
                         <div class="star-rating">
                             @php
-                                $roundedStars = round($averageStars); // 平均の星を整数に丸める
+                                $roundedStars =   floor($averageStars); // 平均の星を整数に丸める
                                 $fractionalPart = $averageStars - $roundedStars; // 平均の星の小数部分を計算
                             @endphp
-                        
+                        　　
                             @for ($i = 5; $i >= 1; $i--)
                                 @if ($i < $roundedStars)
                                     <span style="color: gold;">★</span>
                                 @elseif ($i === $roundedStars && $fractionalPart > 0)
                                     <span style="color: gold;">★</span> <!-- 小数部分の星を表示 -->
-                                    <span style="color: #DDDDDD;">☆</span> <!-- 小数部分の☆を表示 -->
                                 @else
                                     <span style="color: #DDDDDD;">★</span>
                                 @endif
                             @endfor
-                            <div>
-                                関連する投稿の件数：{{ $relatedPosts->count() }} 件
-                            </div>
-                            {{$averageStars}}
+                            <p>{{$averageStars}}</p>
+                            <p>投稿件数：{{ $relatedPosts->count() }} 件</p> 
+                            <p>{{ $roundedStars }}</p>
+                            <p>{{$fractionalPart}}</p>
                         </div>
                         <div class="content" >
                             <div class="content__post">
