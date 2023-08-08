@@ -11,3 +11,31 @@
   content: '\2605';
   position: absolute;
 }
+
+.rate {
+  position: relative;
+  display: inline-block;
+  width: 150px; 
+  height: 30px; 
+  font-size: 30px;
+}
+
+.rate::before,
+.rate::after {
+  position: absolute;
+  display: inline-block;
+  height: 30px;
+  content: '★★★★★';
+  line-height: 30px;
+}
+
+.rate::before {
+  color: #c4c4c4; /* 背景の星、色はグレー */
+}
+
+.rate::after {
+  overflow: hidden;
+  width: calc({{ $averageStars }} * 30px * *0.2);
+  color: #ffb906; /* 評価の星、色はゴールド */
+}
+
