@@ -24,13 +24,11 @@
         </head>
         <body>
             <div class="container">
-                <div class="row " style="margin:100px;">
+                <div class="row" style="margin:100px;">
                     <div class="border " style="padding:50px; border-radius:20px; background-color: #FFEFD5;">
-                        <div class="" style="display: flex; text-align: center;">
-                            <h1 class="title">
-                            {{ $example->name }}
-                            </h1>
-                            <div class="">
+                        <div class="d-flex justify-content-between">
+                            <h1 class="title">{{ $example->name }}</h1>
+                            <div class="flex">
                                 @if ($isFavorite)
                                     <form action="/components/{{ $example->id }}/unbook" method="post" style="padding: 0 15px;">
                                         @csrf
@@ -45,11 +43,12 @@
                                 @endif
                             </div>    
                         </div>
-                        <div class="star">
-                            <span class="rate"></span><span class="num">{{ $averageStars }}</span>
+                        <div class="">
+                            <span class="rate" style="width: {{ $averageStars * 30 }}px;"></span>
+                            <span class="num">{{ $averageStars }}</span>
                             <p class="my-3">投稿件数：{{ $relatedPosts->count() }} 件</p> 
                         </div>
-                        <div class="content" >
+                        <div class="content">
                             <div class="content__post">
                                 <h3 class="py-4">効果</h3>
                                 <p class="py-1">{{ $example->effect }}</p>    
@@ -62,7 +61,7 @@
                     </div>  
                     <div style="margin:50px 0;">
                         <h2 class="">関連する投稿</h2>
-                        <div style="mt-3">
+                        <div class="mt-3">
                         {{-- $component->nameと$post->seibunが一致する場合のPostレコードを表示 --}}
                         @if($relatedPosts->isNotEmpty())
                             <ul>

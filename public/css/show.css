@@ -35,7 +35,7 @@
 
 .rate::after {
   overflow: hidden;
-  width: calc({{ $averageStars }} * 30px);
+  width: calc({{ $averageStars }} * 30px * *0.2);
   color: #ffb906; /* 評価の星、色はゴールド */
 }
 
