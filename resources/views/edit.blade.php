@@ -31,8 +31,7 @@
                     @csrf
                     @method('patch')
                         <div>
-                            <label for="title">成分</label>
-                            <input type="text" style="width:400px;" name="name" value="{{ $example->name }}">
+                            <label for="title">{{ $example->name }}</label>
                         </div>
                         <div>
                             <label for="effect">本文</label>
