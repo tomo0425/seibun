@@ -43,14 +43,17 @@
                                 @endif
                             </div>    
                         </div>
-                        <div class="">
-                            <span class="rate" style="width: {{ $averageStars * 30 }}px;"></span>
+                        <div class="d-flex flex-column">
+                            <div class="rate-container" style="--score: {{ $averageStars ?? 0 }}">
+                                <span class="rate-bg">★★★★★</span>
+                                <span class="rate-star">★★★★★</span>
+                            </div>
                             <span class="num">{{ $averageStars }}</span>
-                            <p class="my-3">投稿件数：{{ $relatedPosts->count() }} 件</p> 
+                            <p class="my-1">投稿件数：{{ $relatedPosts->count() }} 件</p> 
                         </div>
                         <div class="content">
                             <div class="content__post">
-                                <h3 class="py-4">効果</h3>
+                                <h5 class="py-4">効果</h5>
                                 <p class="py-1">{{ $example->effect }}</p>    
                             </div>
                         </div>
