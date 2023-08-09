@@ -20,7 +20,7 @@
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-            <link rel="stylesheet" href="{{ asset('css/show.css') }}">        
+            <link rel="stylesheet" href="{{ secure_asset('css/show.css') }}">     
         </head>
         <body>
             <div class="container">
