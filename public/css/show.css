@@ -35,7 +35,32 @@
 
 .rate::after {
   overflow: hidden;
-  width: calc({{ $averageStars }} * 30px * *0.2);
   color: #ffb906; /* 評価の星、色はゴールド */
+}
+
+.rate-container {
+    position: relative;
+    display: inline-block;
+    width: 150px; /* または適切な幅を指定 */
+    height: 30px; 
+    font-size: 30px;
+    overflow: hidden;
+}
+
+.rate-bg,
+.rate-star {
+    position: absolute;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.rate-bg {
+    color: #c4c4c4; /* 背景の星、色はグレー */
+}
+
+.rate-star {
+    color: gold; /* 評価の星、色はゴールド */
+    width: calc(var(--score) * 30px); /* 幅を変数に合わせて計算 */
 }
 
