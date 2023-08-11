@@ -53,4 +53,5 @@ class ComponentController extends Controller
         $component->save();
         return redirect()->route('show', $component);
     }   
+    
 }
